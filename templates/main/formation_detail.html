@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load formation_extras %}
+
+{% block title %}{{ formation.nom }} - Kompetans{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-5 fw-bold mb-3">{{ formation.nom }}</h1>
+                <p class="lead">{{ formation.description_courte }}</p>
+                {% if formation.duree %}
+                    <p class="mb-0"><i class="fas fa-clock me-2"></i>Durée : {{ formation.duree }}</p>
+                {% endif %}
+                {% if formation.prix %}
+                    <p class="mb-0"><i class="fas fa-euro-sign me-2"></i>{{ formation.prix }}</p>
+                {% endif %}
+            </div>
+            <div class="col-lg-4">
+                <img src="{% formation_image formation.type_formation %}" class="img-fluid rounded shadow" alt="{{ formation.nom }}">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Content Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Formation Details -->
+            <div class="col-lg-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title h4 mb-4">Description détaillée</h2>
+                        <div class="formation-content">
+                            {{ formation.description_longue|linebreaks }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Objectifs -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title h5 mb-3">Objectifs de la formation</h3>
+                        {% if formation.type_formation == 'habilitation' %}
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Connaître les dangers de l'électricité</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Mettre en œuvre les mesures de prévention</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Analyser les risques électriques</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Obtenir l'habilitation électrique</li>
+                            </ul>
+                        {% elif formation.type_formation == 'nfc15100' %}
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Maîtriser la norme NF C15-100</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Concevoir des installations conformes</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Réaliser les vérifications réglementaires</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Mettre à jour ses connaissances</li>
+                            </ul>
+                        {% elif formation.type_formation == 'formateur' %}
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Acquérir les compétences pédagogiques</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Maîtriser les techniques d'animation</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Évaluer les stagiaires</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Devenir formateur certifié</li>
+                            </ul>
+                        {% elif formation.type_formation == 'cse' %}
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Comprendre le rôle du CSE</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Connaître les obligations légales</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Analyser les risques professionnels</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Exercer son mandat efficacement</li>
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Méthodes pédagogiques -->
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title h5 mb-3">Méthodes pédagogiques</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-graduation-cap text-primary me-2"></i>Cours théoriques</li>
+                                    <li><i class="fas fa-tools text-primary me-2"></i>Exercices pratiques</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-users text-primary me-2"></i>Travaux de groupe</li>
+                                    <li><i class="fas fa-clipboard-check text-primary me-2"></i>Évaluation continue</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm sticky-top" style="top: 100px;">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title h5 mb-0">Demande d'information</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted mb-4">Intéressé par cette formation ? Contactez-nous pour plus d'informations.</p>
+                        
+                        <form method="post" class="needs-validation" novalidate>
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                {{ form.nom.label_tag }}
+                                {{ form.nom }}
+                                <div class="invalid-feedback">
+                                    Veuillez saisir votre nom.
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                {{ form.prenom.label_tag }}
+                                {{ form.prenom }}
+                                <div class="invalid-feedback">
+                                    Veuillez saisir votre prénom.
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                {{ form.entreprise.label_tag }}
+                                {{ form.entreprise }}
+                            </div>
+                            
+                            <div class="mb-3">
+                                {{ form.email.label_tag }}
+                                {{ form.email }}
+                                <div class="invalid-feedback">
+                                    Veuillez saisir un email valide.
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                {{ form.telephone.label_tag }}
+                                {{ form.telephone }}
+                            </div>
+                            
+                            <div class="mb-3">
+                                {{ form.message.label_tag }}
+                                {{ form.message }}
+                                <div class="invalid-feedback">
+                                    Veuillez saisir votre message.
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-paper-plane me-2"></i>Envoyer la demande
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
