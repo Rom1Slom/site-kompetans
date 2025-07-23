@@ -137,8 +137,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Configuration entreprise
 COMPANY_INFO = {
     'name': 'Kompetans',
-    'address': 'Paris, France',
-    'phone': '01 23 45 67 89',
+    'address': 'Creil, France',
+    'phone': '06 52 43 93 39',
     'email': 'contact@kompetans.fr',
     'description': 'Organisme de conseil et de formation spécialisé en électricité',
     'hours': 'Lun-Ven 9h-18h',
