@@ -25,8 +25,13 @@ SECRET_KEY = 'django-insecure-g2lbtah4+&%$nj@sw##2dpfohmd^rbix77mt4qvl8+2ms%+gok
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    'kompetans.fr',
+    'www.kompetans.fr', 
+    'site-kompetans-*.onrender.com',  # Votre URL Render
+    '127.0.0.1',  # Pour le développement local
+    'localhost',  # Pour le développement local
+]
 
 # Application definition
 
