@@ -120,7 +120,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
-
+STATIC_ROOT = BASE_DIR / 'staticfiles' 
 # Media files
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -129,16 +129,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Configuration email Zoho
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.zoho.eu'  # Utilisez .eu puisque vous recevez de zoho.eu
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'contact@kompetans.fr'
-EMAIL_HOST_PASSWORD = 'Coline05be!'
-DEFAULT_FROM_EMAIL = 'contact@kompetans.fr'
-EMAIL_TIMEOUT = 30
 
 
 # Configuration entreprise
@@ -152,3 +142,12 @@ COMPANY_INFO = {
     # Coordonnées Google Maps (exemple Tour Eiffel - à changer)
     'maps_embed_url': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9914406081493!2d2.292292615743886!3d48.85837007928746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1625000000000!5m2!1sfr!2sfr'
 }
+# Configuration email Zoho
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.zoho.eu'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'contact@kompetans.fr'
+EMAIL_HOST_PASSWORD = 'Coline05be!'
+DEFAULT_FROM_EMAIL = 'contact@kompetans.fr'
+EMAIL_TIMEOUT = 30

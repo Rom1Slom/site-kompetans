@@ -16,8 +16,8 @@ formations_data = [
         'type_formation': 'habilitation',
         'description_courte': 'Formation aux habilitations électriques B0, B1, B2, BR, BC selon la norme NF C18-510.',
         'description_longue': 'Formation complète aux habilitations électriques pour travailler en sécurité sur ou à proximité d\'installations électriques.',
-        'duree': '2 à 3 jours selon le niveau',
-        'prix': 'À partir de 350€ HT/personne'
+        'duree': '1, 2 ou 3 jours selon le niveau',
+        'prix': 'À partir de 150€ HT/personne ; devis sur demande'
     },
     {
         'nom': 'Formation à la NF C15-100',
@@ -25,7 +25,7 @@ formations_data = [
         'description_courte': 'Maîtrisez la norme NF C15-100 pour concevoir et réaliser des installations électriques conformes.',
         'description_longue': 'Formation complète sur la norme NF C15-100, référence en matière d\'installations électriques basse tension.',
         'duree': '3 jours',
-        'prix': 'À partir de 890€ HT/personne'
+        'prix': 'Devis personnalisé sur demande'
     },
     {
         'nom': 'Formation de formateur en habilitation électrique',
@@ -33,7 +33,7 @@ formations_data = [
         'description_courte': 'Devenez formateur certifié en habilitation électrique et transmettez vos compétences.',
         'description_longue': 'Formation pour devenir formateur en habilitation électrique selon la norme NF C18-510.',
         'duree': '5 jours',
-        'prix': 'À partir de 1890€ HT/personne'
+        'prix': 'Devis personnalisé sur demande'
     },
     {
         'nom': 'Formation des élus du Comité Social et Économique (CSE)',
