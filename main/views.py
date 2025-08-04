@@ -42,7 +42,7 @@ Message :
 Email automatique depuis kompetans.fr
                     ''',
                     from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=['contact@kompetans.fr'],  # Votre email
+                    recipient_list=['slomczynskiromain@yahoo.fr'],  # Votre email
                     fail_silently=False
                 )
                 messages.success(request, 'Votre demande a été envoyée avec succès ! Nous vous recontacterons dans les plus brefs délais.')
