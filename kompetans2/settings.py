@@ -23,9 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-g2lbtah4+&%$nj@sw##2dpfohmd^rbix77mt4qvl8+2ms%+gok'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False  # ← Changez en False pour production
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'kompetans.fr',
+    'www.kompetans.fr', 
+    'kompetans-7.onrender.com',  # Votre URL Render
+    '127.0.0.1',
+    'localhost',
+]
 
 
 # Application definition
@@ -120,6 +126,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # CRUCIAL pour Render
 
 # Media files
 MEDIA_URL = 'media/'
@@ -142,5 +149,13 @@ COMPANY_INFO = {
     # Coordonnées Google Maps (exemple Tour Eiffel - à changer)
     'maps_embed_url':"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20832.89606746855!2d2.4151827443571725!3d49.25532287084479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6497c19c9f561%3A0xfbc088038ebbfb57!2sVillage%20Economique!5e0!3m2!1sfr!2sfr!4v1754340446471!5m2!1sfr!2sfr"
                 
-                }
-                
+}
+
+    # Configuration email 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.zoho.eu'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'contact@kompetans.fr'
+EMAIL_HOST_PASSWORD = 'Coline05be!'
+DEFAULT_FROM_EMAIL = 'contact@kompetans.fr'
