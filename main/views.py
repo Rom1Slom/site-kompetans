@@ -49,7 +49,7 @@ Formation demandée :
                     subject=subject,
                     message=message,
                     from_email=settings.DEFAULT_FROM_EMAIL,  # contact@kompetans.fr
-                    recipient_list=['slomczynskiromain@yahoo.fr'], # ← VOTRE DESTINATAIRE
+                    recipient_list=['contact@kompetans.fr'], # ← VOTRE DESTINATAIRE
                     fail_silently=False,
                 )
                 
