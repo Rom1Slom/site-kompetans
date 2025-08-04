@@ -73,21 +73,9 @@
                 </div>
                 <div class="col-md-4" id="contact">
                     <h5>Contact</h5>
-                    <p class="mb-1">
-                        <i class="fas fa-envelope me-2"></i>
-                        <a href="mailto:{{ company.email }}?subject=Demande d'information - Kompetans&body=Bonjour,%0D%0A%0D%0AJe souhaiterais obtenir des informations concernant vos formations.%0D%0A%0D%0ACordialement" 
-                        class="text-white-50 text-decoration-none">
-                        {{ company.email }}
-                        </a>
-                    </p>
-                    <p class="mb-1">
-                        <i class="fas fa-phone me-2"></i>
-                        <a href="tel:{{ company.phone }}" class="text-white-50 text-decoration-none">
-                            {{ company.phone }}
-                        </a>
-                    </p>
-                    <p><i class="fas fa-map-marker-alt me-2"></i>{{ company.address }}
-                    </p>
+                    <p class="mb-1"><i class="fas fa-envelope me-2"></i>{{ company.email }}</p>
+                    <p class="mb-1"><i class="fas fa-phone me-2"></i>{{ company.phone }}</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>{{ company.address }}</p>
                 </div>
             </div>
             <hr class="my-4">
