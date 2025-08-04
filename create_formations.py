@@ -5,9 +5,27 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'kompetans2.settings')
 django.setup()
 
 from main.models import Formation
+from django.db import transaction
 
-# Supprimer toutes les formations existantes
-Formation.objects.all().delete()
+# Transaction pour garantir la cohérence
+with transaction.atomic():
+
+    # Supprimer toutes les formations existantes
+    Formation.objects.all().delete()
+
+     # Forcer la réinitialisation de la séquence
+    from django.db import connection
+    if connection.vendor == 'sqlite':
+        with connection.cursor() as cursor:
+            cursor.execute("DELETE FROM sqlite_sequence WHERE name='main_formation';")
+    elif connection.vendor == 'postgresql':
+        with connection.cursor() as cursor:
+            cursor.execute("ALTER SEQUENCE main_formation_id_seq RESTART WITH 1;")
+    elif connection.vendor == 'mysql':
+        with connection.cursor() as cursor:
+            cursor.execute("ALTER TABLE main_formation AUTO_INCREMENT = 1;")
+
+print("✅ Base de données nettoyée et séquence réinitialisée")
 
 # Créer les 4 formations
 formations_data = [
