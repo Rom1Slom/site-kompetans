@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.http import JsonResponse
-from django.core.mail import send_mail
-from django.conf import settings
+from django.core.mail import send_mail  
+from django.conf import settings 
 from .models import Formation, ContactFormation
 from .forms import ContactFormationForm
 
@@ -21,7 +21,8 @@ def formation_detail(request, formation_id):
             contact = form.save(commit=False)
             contact.formation = formation
             contact.save()
-            # AJOUT : Envoi de l'email
+            
+            
             try:
                 send_mail(
                     subject=f'Nouvelle demande - {formation.nom}',
@@ -41,15 +42,14 @@ Message :
 Email automatique depuis kompetans.fr
                     ''',
                     from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=['contact@kompetans.fr'],
+                    recipient_list=['slomczynskiromain@yahoo.fr'],  # Votre email
                     fail_silently=False,
                 )
-                messages.success(request, 'Votre demande a été envoyée avec succès ! Nous vous recontacterons rapidement.')
+                messages.success(request, 'Votre demande a été envoyée avec succès ! Nous vous recontacterons dans les plus brefs délais.')
             except Exception as e:
                 print(f"Erreur email : {e}")
-
-
-            messages.success(request, 'Votre demande a été envoyée avec succès ! Nous vous recontacterons dans les plus brefs délais.')
+                messages.success(request, 'Votre demande a été enregistrée. Nous vous recontacterons rapidement.')
+            
             return redirect('formation_detail', formation_id=formation.id)
     else:
         form = ContactFormationForm()
