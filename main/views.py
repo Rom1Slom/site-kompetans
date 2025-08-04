@@ -38,13 +38,7 @@ Téléphone : {contact.telephone or "Non renseigné"}
 Message :
 {contact.message}
 
----
-Email automatique depuis kompetans.fr
-                    ''',
-                    from_email='contact@kompetans.fr',      # Envoi depuis compte principal
-                    recipient_list=['admin@kompetans.fr', 'slomczynskiromain@yahoo.fr'],
-                    fail_silently=False
-                )
+
                 messages.success(request, 'Votre demande a été envoyée avec succès ! Nous vous recontacterons dans les plus brefs délais.')
             except Exception as e:
                 print(f"Erreur email : {e}")
@@ -62,3 +56,10 @@ Email automatique depuis kompetans.fr
 def about(request):
     """Page à propos de Kompetans"""
     return render(request, 'main/about.html')
+---
+Email automatique depuis kompetans.fr
+                    ''',
+                    from_email = settings.DEFAULT_FROM_EMAIL,     # Envoi depuis compte principal
+                    recipient_list=['admin@kompetans.fr', 'slomczynskiromain@yahoo.fr'],
+                    fail_silently=False
+                )
