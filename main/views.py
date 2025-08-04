@@ -41,8 +41,8 @@ Message :
 ---
 Email automatique depuis kompetans.fr
                     ''',
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=['admin@kompetans.fr'],  # Votre email
+                    from_email='contact@kompetans.fr',      # Envoi depuis compte principal
+            recipient_list=['admin@kompetans.fr']
                     fail_silently=False
                 )
                 messages.success(request, 'Votre demande a été envoyée avec succès ! Nous vous recontacterons dans les plus brefs délais.')
