@@ -3,8 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Kompetans - Formation et Conseil en Électricité{% endblock %}</title>
-    
+   
+    <!-- 🔍 SEO BASIQUE -->
+    <title>{% block title %}Kompetans - Formation électrique professionnelle à Montataire (60){% endblock %}</title>
+    <meta name="description" content="{% block description %}Formation habilitation électrique B0 B1 B2 à Creil, Senlis, Compiègne. Recyclage, NF C15-100. Oise et Nord Paris. Agréé OPCO. Devis gratuit.{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}}habilitation électrique Creil, formation électricité Oise, habilitation électrique nord Paris, B0 B1 B2, NF C15-100, Senlis, Compiègne, recyclage habilitation{% endblock %}">
+    <meta name="author" content="Kompetans">
+    <meta name="robots" content="index, follow">
+
+     <!-- 🔗 URL CANONIQUE -->
+    <link rel="canonical" href="https://kompetans.fr{{ request.get_full_path }}">
+
+
+     <!-- 🏢 GOOGLE BUSINESS / MAPS -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Kompetans",
+        "description":  "Formation habilitation électrique B0 B1 B2, recyclage, NF C15-100. Interventions Oise et Nord Paris",
+        "url": "https://kompetans.fr",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Village économique de Montataire",
+            "addressLocality": "Montataire",
+            "postalCode": "60160",
+            "addressRegion": "Oise",
+            "addressCountry": "FR"
+        },
+        "areaServed": [
+            {
+                "@type": "City",
+                "name": "Creil"
+            },
+            {
+                "@type": "City", 
+                "name": "Senlis"
+            },
+            {
+                "@type": "City",
+                "name": "Compiègne"
+            },
+            {
+                "@type": "State",
+                "name": "Oise"
+            }
+        ],
+
+
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+33652439339",
+            "contactType": "customer service",
+            "email": "contact@kompetans.fr"
+        },
+        "offers": [
+        {
+            "@type": "Service",
+            "name": "Habilitation électrique B0 B1 B2",
+            "areaServed": "Oise, Nord Paris"
+        },
+        {
+            "@type": "Service", 
+            "name": "Formation NF C15-100",
+            "areaServed": "Creil, Senlis, Compiègne"
+        }
+        ]
+    }
+    </script>
+
+    {% block extra_head %}{% endblock %}  
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -75,7 +144,20 @@
                     <h5>Contact</h5>
                     <p class="mb-1"><i class="fas fa-envelope me-2"></i>{{ company.email }}</p>
                     <p class="mb-1"><i class="fas fa-phone me-2"></i>{{ company.phone }}</p>
-                    <p><i class="fas fa-map-marker-alt me-2"></i>{{ company.address }}</p>
+                    <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i>{{ company.address }}</p>
+                    <p class="small text-muted mt-2">
+                        <strong>Interventions :</strong> Creil, Senlis, Compiègne, Oise, Nord Paris
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Suivez-nous</h5>
+                    <div class="mb-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-2x"></i></a>
+                    </div>
+                    <p class="small text-muted">
+                        Organisme de formation enregistré sous le numéro XX.XX.XXXXX.XX auprès du préfet de région d'Île-de-France.
+                    </p>
                 </div>
             </div>
             <hr class="my-4">

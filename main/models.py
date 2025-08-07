@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from django.utils.text import slugify
+
 
 class Formation(models.Model):
     """Modèle pour les formations proposées"""
@@ -11,12 +13,22 @@ class Formation(models.Model):
     ]
     
     nom = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
     type_formation = models.CharField(max_length=50, choices=FORMATION_CHOICES)
     description_courte = models.TextField()
     description_longue = models.TextField()
     duree = models.CharField(max_length=100, blank=True)
     prix = models.CharField(max_length=100, blank=True)
+    prix_numerique = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)  # ← AJOUTEZ
     
+    def save(self, *args, **kwargs):  # ← AJOUTEZ CETTE MÉTHODE
+        if not self.slug:
+            self.slug = slugify(self.nom)
+        super().save(*args, **kwargs)
+    
+    def get_absolute_url(self):  # ← AJOUTEZ CETTE MÉTHODE
+        return f'/formation/{self.slug}/'
+
     def get_image_url(self):
         """Retourne l'URL de l'image statique correspondant au type de formation"""
         image_mapping = {
