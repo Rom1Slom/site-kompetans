@@ -49,7 +49,6 @@
                         {% if formation.duree %}
                             <p class="text-muted mb-2"><i class="fas fa-clock me-2"></i>{{ formation.duree }}</p>
                         {% endif %}
-                        <!-- ⭐ MISE À JOUR : Utilisation du slug pour les nouvelles formations -->
                         {% if formation.slug %}
                             <a href="{% url 'formation_detail_slug' formation.slug %}" class="btn btn-primary mt-auto">
                         {% else %}
@@ -65,12 +64,144 @@
     </div>
 </section>
 
+<!-- ⭐ SECTION POURQUOI CHOISIR KOMPETANS (AJOUTEZ) -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 class="display-6 fw-bold mb-4">Pourquoi choisir Kompetans ?</h2>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-certificate fa-2x text-primary me-3"></i>
+                            </div>
+                            <div>
+                                <h5>Expertise reconnue</h5>
+                                <p>Formateurs certifiés avec plus de 15 ans d'expérience dans l'électricité et la sécurité.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-map-marker-alt fa-2x text-primary me-3"></i>
+                            </div>
+                            <div>
+                                <h5>Proximité Oise</h5>
+                                <p>Interventions rapides à Creil, Senlis, Compiègne et dans tout le département de l'Oise.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-hands-helping fa-2x text-primary me-3"></i>
+                            </div>
+                            <div>
+                                <h5>Formations sur mesure</h5>
+                                <p>Adaptées à vos besoins : en centre ou dans vos locaux selon vos contraintes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-euro-sign fa-2x text-primary me-3"></i>
+                            </div>
+                            <div>
+                                <h5>Financement OPCO</h5>
+                                <p>Formations éligibles aux financements OPCO. Nous vous accompagnons dans les démarches.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <img src="{% static 'images/formation-team.jpg' %}" 
+                     alt="Équipe formation Kompetans" 
+                     class="img-fluid rounded shadow"
+                     style="max-height: 400px; object-fit: cover;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ⭐ SECTION LOCALISATION + GOOGLE MAPS (AJOUTEZ) -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="display-6 fw-bold mb-4">Notre zone d'intervention</h2>
+                <p class="lead mb-4">Kompetans intervient dans l'Oise et le Nord de l'Île-de-France pour vos formations en habilitation électrique.</p>
+                
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-map-marker-alt text-primary me-2"></i>Oise (60)</h5>
+                        <ul class="list-unstyled">
+                            <li>✓ Creil</li>
+                            <li>✓ Senlis</li>
+                            <li>✓ Compiègne</li>
+                            <li>✓ Montataire</li>
+                            <li>✓ Nogent-sur-Oise</li>
+                            <li>✓ Pont-Sainte-Maxence</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-map-marker-alt text-primary me-2"></i>Nord Paris</h5>
+                        <ul class="list-unstyled">
+                            <li>✓ Chantilly</li>
+                            <li>✓ Gouvieux</li>
+                            <li>✓ Plailly</li>
+                            <li>✓ Survilliers</li>
+                            <li>✓ Fosses</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info">
+                    <h6><i class="fas fa-info-circle me-2"></i>Notre centre de formation</h6>
+                    <p class="mb-0">Village économique de Montataire<br>
+                    60160 Montataire<br>
+                    <strong>📞 06 52 43 93 39</strong></p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="rounded shadow" style="height: 450px;">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.123456789!2d2.438889!3d49.263611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDnCsDE1JzQ5LjAiTiAywrAyNiczMi4wIkU!5e0!3m2!1sfr!2sfr!4v1234567890123"
+                        width="100%" 
+                        height="450" 
+                        style="border:0; border-radius: 10px;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Localisation Kompetans Montataire Oise">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- CTA Section -->
 <section class="py-5 bg-primary text-white">
     <div class="container text-center">
         <h2 class="display-6 fw-bold mb-4">Prêt à vous former ?</h2>
-        <p class="lead mb-4">Contactez-nous pour discuter de vos besoins en formation</p>
-        <a href="#contact" class="btn btn-light btn-lg">Nous contacter</a>
+        <p class="lead mb-4">Contactez-nous pour discuter de vos besoins en formation électrique</p>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="d-flex flex-column flex-md-row gap-3 justify-content-center">
+                    <a href="#contact" class="btn btn-light btn-lg">
+                        <i class="fas fa-phone me-2"></i>06 52 43 93 39
+                    </a>
+                    <a href="mailto:contact@kompetans.fr" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-envelope me-2"></i>contact@kompetans.fr
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}
