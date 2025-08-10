@@ -21,9 +21,18 @@ class Formation(models.Model):
     prix = models.CharField(max_length=100, blank=True)
     prix_numerique = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)  # ← AJOUTEZ
     
-    def save(self, *args, **kwargs):  # ← AJOUTEZ CETTE MÉTHODE
+    def save(self, *args, **kwargs):
+        # Génère automatiquement le slug si vide
         if not self.slug:
             self.slug = slugify(self.nom)
+            
+            # Évite les doublons
+            original_slug = self.slug
+            counter = 1
+            while Formation.objects.filter(slug=self.slug).exists():
+                self.slug = f"{original_slug}-{counter}"
+                counter += 1
+                
         super().save(*args, **kwargs)
     
     def get_absolute_url(self):  # ← AJOUTEZ CETTE MÉTHODE
