@@ -1,114 +1,80 @@
-/* OVERRIDE BOOTSTRAP COMPLET */
-:root {
-    --bs-primary: #6B9BD1 !important;
-    --bs-primary-rgb: 107, 155, 209 !important;
-}
+/* Custom CSS for Kompetans */
 
-/* ================================
-   VARIABLES CSS
-   ================================ */
 :root {
-    /* Nouvelle palette bleu pastel */
-    --primary-color: #6B9BD1;        /* Bleu cornflower pastel */
-    --primary-hover: #5A8BC4;        /* Hover plus foncé */
-    --primary-light: #B8D4F0;        /* Très clair pour backgrounds */
-    --primary-dark: #4A7BA7;         /* Pour les contrastes */
-    --primary-alpha: rgba(107, 155, 209, 0.15);  /* Transparence */
-    
-    /* Autres couleurs inchangées */
+    --primary-color: #4376c2;
+    --secondary-color: #6c757d;
     --success-color: #198754;
     --warning-color: #ffc107;
-    --info-color: #0dcaf0;
     --danger-color: #dc3545;
+    --info-color: #0dcaf0;
     --light-color: #f8f9fa;
     --dark-color: #212529;
-    --border-radius: 8px;
-    --transition: all 0.3s ease;
 }
 
-/* ================================
-   BASE STYLES
-   ================================ */
 body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
 }
 
-/* ================================
-   NAVIGATION
-   ================================ */
-.navbar-dark.bg-primary {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover)) !important;
+/* Navigation */
+.navbar-brand {
+    font-size: 1.5rem;
 }
-/* ================================
-   HERO SECTION
-   ================================ */
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #fff !important;
+}
+
+/* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-    position: relative;
-    min-height: 600px;
+    background: linear-gradient(135deg, #0d6efd 0%, #0056b3 100%);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
 }
 
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('/static/images/electrical-bg.jpg') center/cover;
-    opacity: 0.1;
-    z-index: 1;
+/* Formation Cards */
+.formation-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
-.hero-section .container {
-    position: relative;
-    z-index: 2;
+.formation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
 }
 
-.min-vh-75 {
-    min-height: 75vh;
+.formation-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
 }
 
-/* Boutons Hero */
-.btn-warning {
-    background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+/* Buttons */
+.btn {
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0d6efd 0%, #0056b3 100%);
     border: none;
-    color: #212529;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
 }
 
-.btn-warning:hover {
-    background: linear-gradient(135deg, #e0a800 0%, #cc9a00 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
-}
-
-.btn-outline-light {
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    color: white;
-    font-weight: 600;
-}
-
-.btn-outline-light:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: white;
-    color: white;
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
     transform: translateY(-2px);
 }
 
-/* ================================
-   CARDS GÉNÉRALES
-   ================================ */
+/* Cards */
 .card {
     border: none;
-    border-radius: var(--border-radius);
-    transition: var(--transition);
-}
-
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .card-header {
@@ -116,287 +82,196 @@ body {
     border-bottom: none;
 }
 
-/* ================================
-   FORMATION CARDS - SECTION PRINCIPALE
-   ================================ */
-
-/* Link wrapper pour cards cliquables */
-.formation-card-link {
-    text-decoration: none !important;
-    color: inherit;
-    display: block;
-    transition: var(--transition);
-}
-
-.formation-card-link:hover,
-.formation-card-link:focus {
-    text-decoration: none !important;
-    color: inherit;
-}
-
-/* Card principale */
-.formation-card {
-    border: 2px solid var(--light-color) !important;
-    transition: var(--transition);
-    cursor: pointer;
-    position: relative;
-    border-radius: 15px !important;
-}
-
-/* Hover effects sur la card */
-.formation-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
-}
-
-/* Image hover effects */
-.formation-card-link:hover .card-img-top {
-    transform: scale(1.05);
-}
-
-.formation-card-link:hover .hover-overlay {
-    opacity: 1 !important;
-}
-
-/* Hover overlay sur l'image */
-.hover-overlay {
-    transition: opacity 0.3s ease;
-}
-
-/* Flèche indicateur cliquable */
-.formation-card::after {
-    content: '→';
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: var(--primary-alpha);
-    color: var(--primary-color);
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 18px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.formation-card:hover::after {
-    opacity: 1;
-}
-
-/* ================================
-   COULEURS PAR TYPE DE FORMATION
-   ================================ */
-
-/* Habilitation - Jaune/Orange */
-.formation-card.habilitation {
-    background: linear-gradient(135deg, #fffbf0 0%, #fef7e0 100%);
-    border-color: #ffd93d !important;
-}
-
-.formation-card.habilitation:hover {
-    border-color: #e67e22 !important;
-    box-shadow: 0 10px 25px rgba(243, 156, 18, 0.2) !important;
-}
-
-/* NF C15-100 - Vert */
-.formation-card.nfc15100 {
-    background: linear-gradient(135deg, #f0fff4 0%, #e0f2e7 100%);
-    border-color: #6bcf7f !important;
-}
-
-.formation-card.nfc15100:hover {
-    border-color: #138496 !important;
-    box-shadow: 0 10px 25px rgba(23, 162, 184, 0.2) !important;
-}
-
-/* Formateur - Violet */
-.formation-card.formateur {
-    background: linear-gradient(135deg, #f8f9ff 0%, #e8eaff 100%);
-    border-color: #a29bfe !important;
-}
-
-.formation-card.formateur:hover {
-    border-color: #5a52ff !important;
-    box-shadow: 0 10px 25px rgba(108, 99, 255, 0.2) !important;
-}
-
-/* CSE - Rose */
-.formation-card.cse {
-    background: linear-gradient(135deg, #fff0f6 0%, #ffe0ec 100%);
-    border-color: #fd79a8 !important;
-}
-
-.formation-card.cse:hover {
-    border-color: #c2185b !important;
-    box-shadow: 0 10px 25px rgba(233, 30, 99, 0.2) !important;
-}
-
-/* ================================
-   FORMULAIRES
-   ================================ */
+/* Form Styles */
 .form-control {
-    border-radius: var(--border-radius);
+    border-radius: 8px;
     border: 1px solid #dee2e6;
     padding: 0.75rem 1rem;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-control:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.2rem rgba(107, 155, 209, 0.25);
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
 }
 
-/* ================================
-   FORMULAIRE DE DEVIS OPTIMISÉ
-   ================================ */
-
-/* Header du formulaire */
-.card[style*="border: 2px solid #198754"] .card-header {
-    background: linear-gradient(135deg, var(--success-color) 0%, #20c997 100%) !important;
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #495057;
 }
 
-/* Alert de devis gratuit */
-.alert-success.alert-sm {
-    border-radius: 10px;
-    font-size: 0.9rem;
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Bouton de devis */
-.btn-success.btn-lg {
-    padding: 12px 20px;
-    font-weight: 600;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 8px rgba(25, 135, 84, 0.3);
-    transition: var(--transition);
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
 }
 
-.btn-success.btn-lg:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(25, 135, 84, 0.4);
+/* Utility Classes */
+.text-primary {
+    color: var(--primary-color) !important;
 }
 
-/* Footer du formulaire */
-.card-footer.bg-light {
-    border-top: 1px solid var(--success-color);
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+.bg-primary {
+    background: linear-gradient(135deg, #0d6efd 0%, #0056b3 100%) !important;
 }
 
-/* Animation pulse pour attirer l'attention */
-@keyframes pulse-green {
-    0% { box-shadow: 0 0 0 0 rgba(25, 135, 84, 0.4); }
-    50% { box-shadow: 0 0 0 10px rgba(25, 135, 84, 0.1); }
-    100% { box-shadow: 0 0 0 0 rgba(25, 135, 84, 0); }
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
 
-.card[style*="border: 2px solid #198754"]:hover {
-    animation: pulse-green 2s infinite;
+.shadow {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
-/* ================================
-   BOUTONS
-   ================================ */
-.btn-primary {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
-    border-color: var(--primary-color);
-    color: white;
-}
-
-.btn-primary:hover {
-    background: linear-gradient(135deg, var(--primary-hover), var(--primary-dark));
-    border-color: var(--primary-hover);
-    transform: translateY(-1px);
-}
-
-/* ================================
-   SECTIONS
-   ================================ */
-.py-5 {
-    padding: 3rem 0;
-}
-
-.bg-light {
-    background-color: #f8f9fa !important;
-}
-
-/* ================================
-   RESPONSIVE
-   ================================ */
+/* Responsive Design */
 @media (max-width: 768px) {
     .hero-section {
+        min-height: 50vh;
         text-align: center;
-    }
-    
-    .hero-section .col-lg-4 {
-        margin-top: 2rem;
-    }
-    
-    .formation-card {
-        margin-bottom: 2rem;
     }
     
     .display-4 {
         font-size: 2.5rem;
     }
-}
-
-@media (max-width: 576px) {
-    .btn-lg {
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
+    
+    .display-5 {
+        font-size: 2rem;
     }
     
-    .formation-card::after {
-        display: none;
+    .display-6 {
+        font-size: 1.75rem;
     }
 }
-/* ================================
-   OVERRIDES BOOTSTRAP
-   ================================ */
-.bg-primary {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover)) !important;
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #212529 0%, #343a40 100%) !important;
 }
 
-.navbar-brand {
-    font-size: 1.5rem;
-    font-weight: 700;
+footer a {
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-.btn {
-    border-radius: var(--border-radius);
+footer a:hover {
+    color: #fff !important;
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #0d6efd;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Alert Styles */
+.alert {
+    border: none;
+    border-radius: 8px;
     font-weight: 500;
-    transition: var(--transition);
 }
 
-.btn:hover {
-    transform: translateY(-1px);
-}
-/* ================================
-   UTILITIES
-   ================================ */
-.shadow-sm {
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+.alert-success {
+    background-color: #d1e7dd;
+    color: #0f5132;
 }
 
-.text-primary {
-    color: var(--primary-color) !important;
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
 }
 
-.border-2 {
-    border-width: 2px !important;
+.alert-info {
+    background-color: #d1ecf1;
+    color: #055160;
 }
 
-/* ================================
-   ANIMATIONS
-   ================================ */
-.fade-in {
-    animation: fadeIn 0.6s ease-in;
+.alert-warning {
+    background-color: #fff3cd;
+    color: #664d03;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Sticky Top */
+.sticky-top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 100px;
+    z-index: 1020;
+}
+
+/* Formation Content */
+.formation-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.formation-content h3 {
+    color: var(--primary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.formation-content ul {
+    padding-left: 1.5rem;
+}
+
+.formation-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Google Maps Styles */
+.map-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0;
+}
+
+.map-container iframe {
+    transition: filter 0.3s ease;
+}
+
+.map-container:hover iframe {
+    filter: brightness(1.1);
+}
+
+/* Contact Info Styles */
+.contact-info {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.contact-info i {
+    width: 25px;
+    text-align: center;
+}
+
+.contact-info strong {
+    color: var(--dark-color);
+}
+
+/* Map Card Hover Effect */
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease;
 }
