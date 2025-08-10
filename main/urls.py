@@ -3,8 +3,9 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('formation/<int:formation_id>/', views.formation_detail, name='formation_detail'),
-     path('formation/<slug:slug>/', views.formation_detail_slug, name='formation_detail_slug'),  # Nouvelle URL avec slug
+    # ✅ URL avec SLUG pour SEO (priorité)
+    path('formation/<slug:slug>/', views.formation_detail_slug, name='formation_detail'),
+    # ✅ URL avec ID pour compatibilité (différent chemin)
+    path('formation/id/<int:formation_id>/', views.formation_detail, name='formation_detail_id'),
     path('about/', views.about, name='about'),
-    path('zones-intervention/', views.zones, name='zones'),
 ]

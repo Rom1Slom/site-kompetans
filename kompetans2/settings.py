@@ -134,10 +134,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Configuration entreprise
 COMPANY_INFO = {
     'name': 'Kompetans',
-    'address': 'Paris, France',
-    'phone': '01 23 45 67 89',
+    'address': 'Montataire, France',
+    'phone': '06 52 43 93 39',
     'email': 'contact@kompetans.fr',
-    'description': 'Organisme de conseil et de formation spécialisé en électricité',
+    'description': 'Organisme de conseil et de formation spécialisé dans les risques professionnels',
     'hours': 'Lun-Ven 9h-18h',
     # Coordonnées Google Maps (exemple Tour Eiffel - à changer)
     'maps_embed_url': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9914406081493!2d2.292292615743886!3d48.85837007928746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1625000000000!5m2!1sfr!2sfr'

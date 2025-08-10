@@ -2,28 +2,71 @@
 {% load static %}
 {% load formation_extras %}
 
-{% block title %}Habilitation électrique Creil, Oise | Formation B0 B1 B2 | Kompetans{% endblock %}
-{% block description %}Formation habilitation électrique B0 B1 B2 à Creil, Senlis, Compiègne. Recyclage NF C15-100. Interventions Oise et Nord Paris. Agréé OPCO.{% endblock %}
-{% block keywords %}habilitation électrique Creil, formation électricité Oise, B0 B1 B2 Senlis, recyclage habilitation, nord Paris formation électrique{% endblock %}
-
 {% block content %}
 <!-- Hero Section -->
 <section class="hero-section bg-primary text-white py-5">
     <div class="container">
-        <div class="row align-items-center">
-            <!-- ⭐ TEXTE À GAUCHE (8/12) -->
-            <div class="col-lg-8">
-                <h1 class="display-4 fw-bold mb-4">Kompetans</h1>
-                <p class="lead mb-4">Formation habilitation électrique B0 B1 B2 BR BC - Creil, Oise, Paris Nord</p>
-                <p class="mb-4">Formation à la rédaction de votre Document Unique (DUERP) et de vos Plans de prévention.</p>
-                <a href="#formations" class="btn btn-light btn-lg">Découvrir nos formations</a>
+        <div class="row align-items-center min-vh-75">
+            <div class="col-lg-8 mb-4 mb-lg-0">
+                <h1 class="fw-bold mb-3" style="font-size: 2.7rem; line-height: 1.1;">
+                    <span>Prévention des risques professionnels</span>
+                </h1>
+                <div class="h4 mb-0 fw-normal" style="font-size: 1.4rem;">
+                    <ul class="list-unstyled mb-0"></ul>
+                        <li><span role="img" aria-label="éclair">⚡</span> Habilitations électriques</li>
+                        <li><span role="img" aria-label="document">📄</span> Document unique et Plan de prévention</li>
+                        <li><span role="img" aria-label="formation">🎓</span> Formation de formateur en habilitation électrique</li>
+                    </ul>
+                 </div>
+                </h1>
+                </h1>
+                <p class="lead mb-4 mt-4">
+                    Centre de formation agréé<br>
+                    Interventions dans le 60, 95, 93 et 75 ...<br>
+                    Mais aussi dans toute la France, grâce à nos formateurs agréés sur tout le territoire.
+                </p>
+                <div class="d-flex flex-column flex-sm-row gap-3">
+                    <a href="#formations" class="btn btn-warning btn-lg px-4 py-3">
+                        <i class="fas fa-graduation-cap me-2"></i>Découvrir nos formations
+                    </a>
+                    <a href="tel:0652439339" class="btn btn-outline-light btn-lg px-4 py-3">
+                        <i class="fas fa-phone me-2"></i>06 52 43 93 39
+                    </a>
+                </div>
+                
+                <!-- Points forts -->
+                <div class="row mt-5">
+                    <div class="col-md-4 mb-3">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-warning rounded-circle p-2 me-3" style="width: 40px; height: 40px;">
+                                <i class="fas fa-certificate text-dark small"></i>
+                            </div>
+                            <small><strong>Formation certifiante</strong><br>Agréé OPCO</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-warning rounded-circle p-2 me-3" style="width: 40px; height: 40px;">
+                                <i class="fas fa-map-marker-alt text-dark small"></i>
+                            </div>
+                            <small><strong>Proche de vous</strong><br>Basé à Creil, mais formations dans toute la France</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-warning rounded-circle p-2 me-3" style="width: 40px; height: 40px;">
+                                <i class="fas fa-clock text-dark small"></i>
+                            </div>
+                            <small><strong>Planning flexible</strong><br>Sessions régulières</small>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <!-- ⭐ IMAGE À DROITE (4/12) -->
             <div class="col-lg-4 text-center">
                 <img src="{% static 'images/kompetans.jpeg' %}" 
-                     alt="Formation habilitation électrique Kompetans Creil Oise" 
-                     class="img-fluid rounded shadow-lg"
+                     class="img-fluid rounded shadow" 
+                     alt="Formation Kompetans Creil" 
                      style="max-height: 400px; object-fit: cover;">
             </div>
         </div>
@@ -35,150 +78,134 @@
     <div class="container">
         <div class="text-center mb-5">
             <h2 class="display-5 fw-bold mb-3">Nos Formations</h2>
-            <p class="lead">Choisissez votre formation</p>
+            
         </div>
         
         <div class="row">
             {% for formation in formations %}
             <div class="col-md-6 col-lg-3 mb-4">
-                <div class="card h-100 shadow-sm formation-card">
-                    <img src="{% formation_image formation.type_formation %}" class="card-img-top" alt="{{ formation.nom }}" style="height: 200px; object-fit: cover;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{ formation.nom }}</h5>
-                        <p class="card-text flex-grow-1">{{ formation.description_courte }}</p>
-                        {% if formation.duree %}
-                            <p class="text-muted mb-2"><i class="fas fa-clock me-2"></i>{{ formation.duree }}</p>
-                        {% endif %}
-                        {% if formation.slug %}
-                            <a href="{% url 'formation_detail_slug' formation.slug %}" class="btn btn-primary mt-auto">
-                        {% else %}
-                            <a href="{% url 'formation_detail' formation.id %}" class="btn btn-primary mt-auto">
-                        {% endif %}
-                            En savoir plus
-                        </a>
+                <!-- ⭐ TOUTE LA CARD EST CLIQUABLE -->
+                <a href="{% url 'formation_detail' formation.slug %}" class="formation-card-link">
+                    <div class="card h-100 shadow-sm formation-card {{ formation.type_formation }}" 
+                         style="transition: all 0.3s ease; border-radius: 15px; cursor: pointer;">
+                        
+                        <!-- Image avec overlay -->
+                        <div class="position-relative overflow-hidden" style="border-radius: 15px 15px 0 0;">
+                            <img src="{% formation_image formation.type_formation %}" 
+                                 class="card-img-top" 
+                                 alt="{{ formation.nom }}" 
+                                 style="height: 200px; object-fit: cover; transition: transform 0.3s;">
+                            
+                            <!-- Hover overlay -->
+                            <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary d-flex align-items-center justify-content-center opacity-0 hover-overlay" 
+                                 style="background: rgba(107, 155, 209, 0.85) !important; transition: opacity 0.3s;">
+                                <div class="text-white text-center">
+                                    <i class="fas fa-eye fa-2x mb-2"></i>
+                                    <p class="mb-0 fw-bold">Découvrir</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-body p-4">
+                            <h5 class="card-title text-dark fw-bold mb-3">{{ formation.nom }}</h5>
+                            <p class="card-text text-muted mb-3">{{ formation.description_courte }}</p>
+                            
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                {% if formation.duree %}
+                                <span class="badge bg-light text-primary">
+                                    <i class="fas fa-clock me-1"></i>{{ formation.duree }}
+                                </span>
+                                {% endif %}
+                                
+                                <span class="badge bg-light text-success">
+                                    <i class="fas fa-map-marker-alt me-1"></i>Oise
+                                </span>
+                            </div>
+                            
+                            <!-- Indicateur visuel que c'est cliquable -->
+                            <div class="d-flex align-items-center justify-content-between">
+                                <span class="text-primary fw-bold">En savoir plus</span>
+                                <i class="fas fa-arrow-right text-primary"></i>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- ⭐ SECTION POURQUOI CHOISIR KOMPETANS (AJOUTEZ) -->
+<!-- About Section -->
 <section class="py-5 bg-light">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
                 <h2 class="display-6 fw-bold mb-4">Pourquoi choisir Kompetans ?</h2>
                 <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <div class="d-flex">
-                            <div class="flex-shrink-0">
-                                <i class="fas fa-certificate fa-2x text-primary me-3"></i>
-                            </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-check-circle text-success me-3 mt-1"></i>
                             <div>
                                 <h5>Expertise reconnue</h5>
-                                <p>Formateurs certifiés avec plus de 15 ans d'expérience dans l'électricité et la sécurité.</p>
+                                <p>Formateurs certifiés et expérimentés</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="d-flex">
-                            <div class="flex-shrink-0">
-                                <i class="fas fa-map-marker-alt fa-2x text-primary me-3"></i>
-                            </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-users text-success me-3 mt-1"></i>
                             <div>
-                                <h5>Proximité Oise</h5>
-                                <p>Interventions rapides à Creil, Senlis, Compiègne et dans tout le département de l'Oise.</p>
+                                <h5>Formations personnalisées</h5>
+                                <p>Adaptées à vos besoins spécifiques</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="d-flex">
-                            <div class="flex-shrink-0">
-                                <i class="fas fa-hands-helping fa-2x text-primary me-3"></i>
-                            </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-certificate text-success me-3 mt-1"></i>
                             <div>
-                                <h5>Formations sur mesure</h5>
-                                <p>Adaptées à vos besoins : en centre ou dans vos locaux selon vos contraintes.</p>
+                                <h5>Certifications officielles</h5>
+                                <p>Conformes aux normes en vigueur</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="d-flex">
-                            <div class="flex-shrink-0">
-                                <i class="fas fa-euro-sign fa-2x text-primary me-3"></i>
-                            </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-handshake text-success me-3 mt-1"></i>
                             <div>
-                                <h5>Financement OPCO</h5>
-                                <p>Formations éligibles aux financements OPCO. Nous vous accompagnons dans les démarches.</p>
+                                <h5>Accompagnement complet</h5>
+                                <p>Suivi personnalisé de A à Z</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 text-center">
-                <img src="{% static 'images/formation-team.jpg' %}" 
-                     alt="Équipe formation Kompetans" 
-                     class="img-fluid rounded shadow"
-                     style="max-height: 400px; object-fit: cover;">
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ⭐ SECTION LOCALISATION + GOOGLE MAPS (AJOUTEZ) -->
-<section class="py-5">
-    <div class="container">
-        <div class="row">
             <div class="col-lg-6">
-                <h2 class="display-6 fw-bold mb-4">Notre zone d'intervention</h2>
-                <p class="lead mb-4">Kompetans intervient dans l'Oise et le Nord de l'Île-de-France pour vos formations en habilitation électrique.</p>
-                
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <h5><i class="fas fa-map-marker-alt text-primary me-2"></i>Oise (60)</h5>
-                        <ul class="list-unstyled">
-                            <li>✓ Creil</li>
-                            <li>✓ Senlis</li>
-                            <li>✓ Compiègne</li>
-                            <li>✓ Montataire</li>
-                            <li>✓ Nogent-sur-Oise</li>
-                            <li>✓ Pont-Sainte-Maxence</li>
-                        </ul>
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h5 class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Notre Localisation</h5>
                     </div>
-                    <div class="col-md-6">
-                        <h5><i class="fas fa-map-marker-alt text-primary me-2"></i>Nord Paris</h5>
-                        <ul class="list-unstyled">
-                            <li>✓ Chantilly</li>
-                            <li>✓ Gouvieux</li>
-                            <li>✓ Plailly</li>
-                            <li>✓ Survilliers</li>
-                            <li>✓ Fosses</li>
-                        </ul>
+                    <div class="card-body p-0">
+                        <!-- Google Maps Embed -->
+                        <div class="map-container" style="height: 300px; position: relative; overflow: hidden;">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2608.2873587508147!2d2.4751!3d49.2628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDnCsDE1JzQ2LjEiTiAywrAyOCczMC40IkU!5e0!3m2!1sfr!2sfr!4v1234567890!5m2!1sfr!2sfr"
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="alert alert-info">
-                    <h6><i class="fas fa-info-circle me-2"></i>Notre centre de formation</h6>
-                    <p class="mb-0">Village économique de Montataire<br>
-                    60160 Montataire<br>
-                    <strong>📞 06 52 43 93 39</strong></p>
-                </div>
-            </div>
-            
-            <div class="col-lg-6">
-                <div class="rounded shadow" style="height: 450px;">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.123456789!2d2.438889!3d49.263611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDnCsDE1JzQ5LjAiTiAywrAyNiczMi4wIkU!5e0!3m2!1sfr!2sfr!4v1234567890123"
-                        width="100%" 
-                        height="450" 
-                        style="border:0; border-radius: 10px;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Localisation Kompetans Montataire Oise">
-                    </iframe>
+                    <div class="card-footer bg-light text-center">
+                        <small class="text-muted">
+                            <i class="fas fa-building me-1"></i>Kompetans - Formation électrique<br>
+                            <i class="fas fa-map-marker-alt me-1"></i>Village économique de Montataire, 60160
+                        </small>
+                    </div>
                 </div>
             </div>
         </div>
@@ -188,19 +215,15 @@
 <!-- CTA Section -->
 <section class="py-5 bg-primary text-white">
     <div class="container text-center">
-        <h2 class="display-6 fw-bold mb-4">Prêt à vous former ?</h2>
-        <p class="lead mb-4">Contactez-nous pour discuter de vos besoins en formation électrique</p>
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="d-flex flex-column flex-md-row gap-3 justify-content-center">
-                    <a href="#contact" class="btn btn-light btn-lg">
-                        <i class="fas fa-phone me-2"></i>06 52 43 93 39
-                    </a>
-                    <a href="mailto:contact@kompetans.fr" class="btn btn-outline-light btn-lg">
-                        <i class="fas fa-envelope me-2"></i>contact@kompetans.fr
-                    </a>
-                </div>
-            </div>
+        <h2 class="display-6 fw-bold mb-4">Prêt à être formé ?</h2>
+        <p class="lead mb-4">Devis gratuit sous 24h • Formations certifiantes • Planning flexible</p>
+        <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+            <a href="tel:0652439339" class="btn btn-warning btn-lg px-4 py-3">
+                <i class="fas fa-phone me-2"></i>Appeler maintenant
+            </a>
+            <a href="mailto:contact@kompetans.fr" class="btn btn-outline-light btn-lg px-4 py-3">
+                <i class="fas fa-envelope me-2"></i>Contacter un conseiller
+            </a>
         </div>
     </div>
 </section>
