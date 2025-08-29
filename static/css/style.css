@@ -1,9 +1,14 @@
+/* Navbar custom foncée */
+.navbar {
+    background: linear-gradient(135deg, #22345a 0%, #1a2940 100%) !important;
+    box-shadow: 0 2px 8px rgba(34, 52, 90, 0.10);
+}
 /* Custom CSS for Kompetans */
 
 :root {
-    --primary-color: #0066FF;        /* Bleu électrique flashy */
-    --primary-hover: #0052CC;        /* Hover plus foncé */
-    --primary-light: #3385FF;        /* Variante claire */
+    --primary-color: #5a8fd6;        /* Bleu pastel professionnel */
+    --primary-hover: #4072b3;        /* Hover plus foncé pastel */
+    --primary-light: #b3c7e6;        /* Variante claire pastel */
     --secondary-color: #6c757d;
     --success-color: #198754;
     --warning-color: #ffc107;
@@ -50,7 +55,7 @@ body {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, #0d6efd 0%, #0056b3 100%);
+    background: linear-gradient(135deg, #5a8fd6 0%, #4072b3 100%);
     min-height: 60vh;
     display: flex;
     align-items: center;
@@ -79,12 +84,12 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #0d6efd 0%, #0056b3 100%);
+    background: linear-gradient(135deg, #5a8fd6 0%, #4072b3 100%);
     border: none;
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+    background: linear-gradient(135deg, #4072b3 0%, #2c4a6b 100%);
     transform: translateY(-2px);
 }
 
@@ -141,7 +146,7 @@ body {
 }
 
 .bg-primary {
-    background: linear-gradient(135deg, #0d6efd 0%, #0056b3 100%) !important;
+    background: linear-gradient(135deg, #5a8fd6 0%, #4072b3 100%) !important;
 }
 
 .shadow-sm {
@@ -192,7 +197,7 @@ footer a:hover {
     width: 20px;
     height: 20px;
     border: 3px solid #f3f3f3;
-    border-top: 3px solid #0d6efd;
+    border-top: 3px solid #5a8fd6;
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }

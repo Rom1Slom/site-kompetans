@@ -153,8 +153,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Configuration entreprise
 COMPANY_INFO = {
     'name': 'Kompetans',
-    'address': 'Montataire, France',
-    'phone': '06 52 43 93 39',
+    'address': '13 rue Maurice Vayer, Montataire, France',
+    'phone': '07 80 43 97 46',
     'email': 'contact@kompetans.fr',
     'description': 'Organisme de conseil et de formation spécialisé dans les risques professionnels',
     'hours': 'Lun-Ven 9h-18h',
