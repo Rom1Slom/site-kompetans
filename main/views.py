@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.http import JsonResponse
 from .models import Formation, ContactFormation
 from .forms import ContactFormationForm
+from django.core.mail import send_mail
 
 def home(request):
     """Page d'accueil avec les 4 formations"""
@@ -39,6 +40,13 @@ def formation_detail(request, formation_id):
             contact = form.save(commit=False)
             contact.formation = formation
             contact.save()
+            send_mail(
+                        'Nouvelle demande de contact formation',
+                        f'Nom : {contact.nom}\\nPrénom : {contact.prenom}\\nEmail : {contact.email}\\nMessage : {contact.message}',
+                        None,  # Utilise DEFAULT_FROM_EMAIL
+                        ['contact@kompetans.fr'],
+                        fail_silently=False,
+                    )
             messages.success(request, 'Votre demande a été envoyée avec succès ! Nous vous recontacterons dans les plus brefs délais.')
             return redirect('formation_detail_id', formation_id=formation.id)
     else:
