@@ -29,8 +29,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'kompetans.fr',
-    'www.kompetans.fr', 
+    'www.kompetans.fr',
     '*.onrender.com',
+    'site-kompetans-7.onrender.com',
     'localhost',
     '127.0.0.1',
 ]
