@@ -48,6 +48,17 @@ def formation_detail(request, formation_id):
                         fail_silently=False,
                     )
             messages.success(request, 'Votre demande a été envoyée avec succès ! Nous vous recontacterons dans les plus brefs délais.')
+            try:
+                result = send_mail(
+                    'Test Render',
+                    'Ceci est un test',
+                    'contact@kompetans.fr',
+                    ['tonadresse@gmail.com'],
+                    fail_silently=False,
+                )
+                print('Résultat envoi email:', result)
+            except Exception as e:
+                print('Erreur envoi email:', e)
             return redirect('formation_detail_id', formation_id=formation.id)
     else:
         form = ContactFormationForm()
