@@ -43,31 +43,36 @@ def formation_detail(request, formation_id):
             contact = form.save(commit=False)
             contact.formation = formation
             contact.save()
-            # Avant send_mail
-            logger.warning(f"Envoi email à : {['contact@kompetans.fr']}")
 
-            send_mail(
-                        'Nouvelle demande de contact formation',
-                        f'Nom : {contact.nom}\\nPrénom : {contact.prenom}\\nEmail : {contact.email}\\nMessage : {contact.message}',
-                        None,  # Utilise DEFAULT_FROM_EMAIL
-                        ['contact@kompetans.fr'],
-                        fail_silently=False,
-                    )
-            messages.success(request, 'Votre demande a été envoyée avec succès ! Nous vous recontacterons dans les plus brefs délais.')
-            # Après send_mail
+            # Construire le message à partir du formulaire
+            subject = f"Demande de contact - {formation.titre}"
+            message = (
+                f"Nouvelle demande pour la formation : {formation.titre}\n\n"
+                f"Nom : {contact.nom}\n"
+                f"Prénom : {contact.prenom}\n"
+                f"Entreprise : {contact.entreprise}\n"
+                f"Email : {contact.email}\n"
+                f"Téléphone : {contact.telephone}\n\n"
+                f"Message :\n{contact.message}"
+            )
+
             try:
-                    result = send_mail(
-                        'Test Render',
-                        'Ceci est un test',
-                        'contact@kompetans.fr',
-                        ['slomczynskiromain@yahoo.fr'],
-                        fail_silently=False,
-                    )
-                    logger.warning('Résultat envoi email: %s', result)
+                result = send_mail(
+                    subject,
+                    message,
+                    "contact@kompetans.fr",           # expéditeur (Zoho)
+                    ["contact@kompetans.fr"],         # destinataire
+                    fail_silently=False,
+                )
+                logger.warning('Résultat envoi email: %s', result)
+                messages.success(request, 'Votre demande a été envoyée avec succès ! Nous vous recontacterons dans les plus brefs délais.')
             except Exception as e:
-                    logger.error('Erreur envoi email: %s', e)
-        else:
-                        form = ContactFormationForm()
+                logger.error('Erreur envoi email: %s', e)
+                messages.error(request, "Une erreur est survenue lors de l'envoi de votre demande. Réessayez plus tard.")
+            
+            return redirect('formation_detail', formation_id=formation.id)
+    else:
+        form = ContactFormationForm()
     
     return render(request, 'main/formation_detail.html', {
         'formation': formation,
