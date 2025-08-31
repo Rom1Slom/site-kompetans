@@ -61,7 +61,7 @@ def formation_detail(request, formation_id):
                     subject,
                     message,
                     "contact@kompetans.fr",           # expéditeur (Zoho)
-                    ["contact@kompetans.fr"],         # destinataire
+                    ["slomczynskiromain@yahoo.fr"],         # destinataire
                     fail_silently=False,
                 )
                 logger.warning('Résultat envoi email: %s', result)
