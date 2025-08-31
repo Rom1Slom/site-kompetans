@@ -44,7 +44,7 @@ def formation_detail(request, formation_id):
                         'Nouvelle demande de contact formation',
                         f'Nom : {contact.nom}\\nPrénom : {contact.prenom}\\nEmail : {contact.email}\\nMessage : {contact.message}',
                         None,  # Utilise DEFAULT_FROM_EMAIL
-                        ['contact@kompetans.fr', 'romain.slomczynski@gmail.com'],
+                        ['contact@kompetans.fr'],
                         fail_silently=False,
                     )
             messages.success(request, 'Votre demande a été envoyée avec succès ! Nous vous recontacterons dans les plus brefs délais.')
