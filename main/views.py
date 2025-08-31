@@ -25,7 +25,39 @@ def formation_detail_slug(request, slug):
             contact = form.save(commit=False)
             contact.formation = formation
             contact.save()
-            messages.success(request, 'Votre demande a été envoyée avec succès ! Nous vous recontacterons dans les plus brefs délais.')
+            # SECTION EMAIL AUTOMATIQUE (à ajouter)
+            try:
+                subject = f'Nouvelle demande de contact - {formation.nom}'
+                message = f"""
+                Nouvelle demande de contact pour la formation : {formation.nom}
+
+                Informations du contact :
+                - Nom : {contact.nom}
+                - Prénom : {contact.prenom}
+                - Email : {contact.email}
+                - Téléphone : {contact.telephone}
+                - Entreprise : {contact.entreprise}
+
+                Message :
+                {contact.message}
+
+                Formation demandée :
+                - Nom : {formation.nom}
+                - Type : {formation.type_formation}
+                - Durée : {formation.duree}
+                - Prix : {formation.prix}
+                """
+                send_mail(
+                    subject=subject,
+                    message=message,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=['contact@kompetans.fr'],
+                    fail_silently=False,
+                )
+                messages.success(request, 'Votre demande a été envoyée avec succès ! Nous vous recontacterons dans les plus brefs délais.')
+            except Exception as e:
+                messages.warning(request, 'Votre demande a été enregistrée, mais l\'email n\'a pas pu être envoyé.')
+                print(f"Erreur envoi email: {e}")
             return redirect('formation_detail', slug=formation.slug)
     else:
         form = ContactFormationForm()
