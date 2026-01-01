@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="py-5 bg-light text-center">
+    <div class="container">
+        <h1 class="display-4">Electrical accreditation</h1>
+        <p><strong>Theoretical and practical training, as well as all exercises, will be provided in English.</strong></p>
+        <p class="lead">Electrical accreditation is a legal requirement in France for anyone working on or near electrical installations. This certification ensures that employees are aware of electrical hazards, understand the risks, and know how to protect themselves and others. The training is based on the French standard NFC 18-510 and is mandatory for both electricians and non-electricians performing electrical work.</p>
+        <div class="d-flex justify-content-center align-items-center gap-3 mt-3 flex-wrap">
+            <a href="#details" class="btn btn-primary btn-lg">More information</a>
+            <a href="tel:+33780439786" class="btn btn-danger btn-lg" style="white-space:nowrap;">
+                Call us: +33 7 80 43 97 86
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="details" class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-7">
+                <h2>About Electrical Accreditation</h2>
+                <p>
+                    In France, electrical accreditation is required by law for all professionals who carry out operations (works, repairs, interventions) on industrial or domestic electrical installations. The NFC 18-510 standard defines the obligations for employers and employees regarding electrical safety. At the end of the training, a certificate is delivered, allowing the employer to validate the electrical accreditation titles for their staff.
+                </p>
+                <h3>Who is concerned?</h3>
+                <p>
+                    This training is mainly aimed at trained and/or professional electricians, but also at any employee who may be exposed to electrical risks. The program is adapted to the level and needs of each participant.
+                </p>
+                <h3>Objectives</h3>
+                <ul>
+                    <li>Identify electrical hazards</li>
+                    <li>Understand the risks</li>
+                    <li>Protect oneself (PPE, CPE, etc.)</li>
+                    <li>React in the event of an accident or fire</li>
+                </ul>
+                <h3>Available Courses</h3>
+                <ul>
+                    <li>Electrical accreditation for non-electricians (<strong>B0</strong>, <strong>H0V</strong>, etc.)</li>
+                    <li>Electrical accreditation for electricians (<strong>B1V</strong>, <strong>B2V</strong>, <strong>BR</strong>, <strong>BC</strong>, <strong>BE TEST</strong>, <strong>H0V</strong>, etc.)</li>
+                    <li>Renewal and refresher courses</li>
+                </ul>
+                <h3>Duration & Validity</h3>
+                <ul>
+                    <li>Initial training: 21 hours (3 days)</li>
+                    <li>Refresher course: 10.5 hours (1.5 days)</li>
+                    <li>Accreditation valid for 3 years</li>
+                </ul>
+            </div>
+            <div class="col-md-5">
+                <div class="card p-4 shadow">
+                    <h4 class="mb-3">Contact us</h4>
+                    <form method="post" action="/contact/">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2>Why choose our accreditation?</h2>
+        <ul>
+            <li>Certified and experienced trainers</li>
+            <li>Up-to-date with current regulations</li>
+            <li>Flexible scheduling and on-site options</li>
+            <li>Support for both individuals and companies</li>
+        </ul>
+    </div>
+</section>
+{% endblock %}

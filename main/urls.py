@@ -8,4 +8,5 @@ urlpatterns = [
     # ✅ URL avec ID pour compatibilité (différent chemin)
     path('formation/id/<int:formation_id>/', views.formation_detail, name='formation_detail_id'),
     path('about/', views.about, name='about'),
+    path('electrical-accreditation/', views.electrical_accreditation, name='electrical_accreditation'),
 ]

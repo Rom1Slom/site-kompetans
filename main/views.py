@@ -1,3 +1,6 @@
+def electrical_accreditation(request):
+    """English page for electrical accreditation only"""
+    return render(request, 'main/electrical_accreditation.html')
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.http import JsonResponse
