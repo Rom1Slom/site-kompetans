@@ -56,7 +56,6 @@ def formation_detail_slug(request, slug):
                     from_email=settings.DEFAULT_FROM_EMAIL,
                     recipient_list=['contact@kompetans.fr'],
                     fail_silently=False,
-                    timeout=10,
                 )
                 messages.success(request, 'Votre demande a été envoyée avec succès ! Nous vous recontacterons dans les plus brefs délais.')
             except Exception as e:
@@ -112,7 +111,6 @@ def formation_detail(request, formation_id):
                     from_email=settings.DEFAULT_FROM_EMAIL,  # contact@kompetans.fr
                     recipient_list=['contact@kompetans.fr'],  # ← VOTRE DESTINATAIRE
                     fail_silently=False,
-                    timeout=10,
                 )
                 messages.success(request, 'Votre demande a été envoyée avec succès ! Nous vous recontacterons dans les plus brefs délais.')
             except Exception as e:
