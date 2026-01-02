@@ -56,11 +56,14 @@ def formation_detail_slug(request, slug):
                     from_email=settings.DEFAULT_FROM_EMAIL,
                     recipient_list=['contact@kompetans.fr'],
                     fail_silently=False,
+                    timeout=10,
                 )
                 messages.success(request, 'Votre demande a été envoyée avec succès ! Nous vous recontacterons dans les plus brefs délais.')
             except Exception as e:
+                import traceback
                 messages.warning(request, 'Votre demande a été enregistrée, mais l\'email n\'a pas pu être envoyé.')
-                print(f"Erreur envoi email: {e}")
+                logger.error(f"Erreur envoi email: {e}\n{traceback.format_exc()}")
+                print(f"Erreur envoi email: {e}\n{traceback.format_exc()}")
             return redirect('formation_detail', slug=formation.slug)
     else:
         form = ContactFormationForm()
@@ -109,11 +112,14 @@ def formation_detail(request, formation_id):
                     from_email=settings.DEFAULT_FROM_EMAIL,  # contact@kompetans.fr
                     recipient_list=['contact@kompetans.fr'],  # ← VOTRE DESTINATAIRE
                     fail_silently=False,
+                    timeout=10,
                 )
                 messages.success(request, 'Votre demande a été envoyée avec succès ! Nous vous recontacterons dans les plus brefs délais.')
             except Exception as e:
+                import traceback
                 messages.warning(request, 'Votre demande a été enregistrée, mais l\'email n\'a pas pu être envoyé.')
-                print(f"Erreur envoi email: {e}")
+                logger.error(f"Erreur envoi email: {e}\n{traceback.format_exc()}")
+                print(f"Erreur envoi email: {e}\n{traceback.format_exc()}")
             
             return redirect('formation_detail', formation_id=formation.id)
     else:
